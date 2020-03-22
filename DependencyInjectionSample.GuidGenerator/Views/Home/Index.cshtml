@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IndexViewModel
+@using DependencyInjectionSample.GuidGenerator.Services
+
+@inject ISingletonGuidGenerator singletonGuidGenerator
+@inject IScopedGuidGenerator scopedGuidGenerator
+@inject ITransientGuidGenerator transientGuidGenerator
+@{
+    Model.Singleton.View = singletonGuidGenerator.Guid;
+    Model.Scoped.View = scopedGuidGenerator.Guid;
+    Model.Transient.View = transientGuidGenerator.Guid;
+
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <div class="col-12">
+        <div class="col-3 bg-danger  float-left">
+            Injection type
+        </div>
+        <div class="col-3 bg-info float-left">
+            Singleton Lifetime
+        </div>
+        <div class="col-3 bg-info float-left">
+            Scoped Lifetime
+        </div>
+        <div class="col-3 bg-info float-left">
+            Transient Lifetime
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="col-3  float-left">
+            Constructor Injection
+        </div>
+        <div class="col-3  float-left">
+            @Model.Singleton.Constructor
+        </div>
+        <div class="col-3  float-left">
+            @Model.Scoped.Constructor
+        </div>
+        <div class="col-3  float-left">
+            @Model.Transient.Constructor
+        </div>
+
+    </div>
+    <div class="col-12">
+        <div class="col-3  float-left">
+            Action Injection
+        </div>
+        <div class="col-3  float-left">
+            @Model.Singleton.Action
+        </div>
+        <div class="col-3  float-left">
+            @Model.Scoped.Action
+        </div>
+        <div class="col-3  float-left">
+            @Model.Transient.Action
+        </div>
+
+    </div>
+    <div class="col-12">
+        <div class="col-3  float-left">
+            View Injection
+        </div>
+        <div class="col-3  float-left">
+            @Model.Singleton.View
+        </div>
+        <div class="col-3  float-left">
+            @Model.Scoped.View
+        </div>
+        <div class="col-3  float-left">
+            @Model.Transient.View
+        </div>
+
+    </div>
+</div>
