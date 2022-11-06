@@ -14,7 +14,7 @@ namespace DependencyInjectionSample.GuidGenerator.Services.Rules
     {
         public bool Check(IndexViewModel indexViewModel)
         {
-            //rule 1 için comment
+            //comment for rule first
             return true;
         }
     }
@@ -22,7 +22,7 @@ namespace DependencyInjectionSample.GuidGenerator.Services.Rules
     {
         public bool Check(IndexViewModel indexViewModel)
         {
-            //rule 2 için comment
+            //comment for rule second
             return true;
         }
     }
@@ -30,7 +30,7 @@ namespace DependencyInjectionSample.GuidGenerator.Services.Rules
     {
         public bool Check(IndexViewModel indexViewModel)
         {
-            //rule 3 için comment
+            //comment for rule third
             return true;
         }
     }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using DependencyInjectionSample.GuidGenerator.Models;
@@ -12,8 +9,7 @@ using DependencyInjectionSample.GuidGenerator.Services.Rules;
 namespace DependencyInjectionSample.GuidGenerator.Controllers
 {
     public class HomeController : Controller
-    {
-
+    { 
         ILogger<HomeController> _logger;
         ISingletonGuidGenerator _singletonGuidGenerator;
         IScopedGuidGenerator _scopedGuidGenerator;
@@ -36,15 +32,16 @@ namespace DependencyInjectionSample.GuidGenerator.Controllers
             [FromServices]ITransientGuidGenerator transientGuidGenerator,[FromServices] IEnumerable<IGuidRule> guidRules)
         {
             IndexViewModel indexViewModel = new IndexViewModel();
-            //Singleton Constractor  ve action  injection için üretilen guid Idler ekleniyor;
+            //Set genereted guid ids for Singleton Constractor and Action  
             indexViewModel.Singleton.Constructor = _singletonGuidGenerator.Guid;
             indexViewModel.Singleton.Action = singletonGuidGenerator.Guid;
-            //Transient Constractor  ve action  injection için üretilen guid Idler ekleniyor;
+            //Set genereted guid ids for Transient Constractor and Action  
             indexViewModel.Transient.Constructor = _transientGuidGenerator.Guid;
             indexViewModel.Transient.Action = transientGuidGenerator.Guid;
-            //Scoped Constractor  ve action  injection için üretilen guid Idler ekleniyor;
+            //Set genereted guid ids for Scoped Constractor and Action
             indexViewModel.Scoped.Constructor = _scopedGuidGenerator.Guid;
             indexViewModel.Scoped.Action = scopedGuidGenerator.Guid;
+
             foreach (var guidRule in guidRules)
             {
                 guidRule.Check(indexViewModel);

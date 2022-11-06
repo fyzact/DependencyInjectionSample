@@ -40,7 +40,7 @@ namespace DependencyInjectionSample.GuidGenerator
             //services.TryAddSingleton<ISingletonGuidGenerator, Services.GuidGenerator>();
             //create instance
             var singletonGuidGenerator = new Services.GuidGenerator();
-            //singletonGuidGenerator de?erini burada kullanabilirsin. 
+
             services.TryAddSingleton<ISingletonGuidGenerator>(sp =>
             {
                 return singletonGuidGenerator;
